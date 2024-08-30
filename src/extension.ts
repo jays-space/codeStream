@@ -1,6 +1,8 @@
 import * as vscode from "vscode";
 import { ContentPanel, SidebarProvider } from "./panels";
 
+const title = "smartenup_test";
+
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -15,22 +17,19 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.commands.registerCommand("codeStream.refresh", async () => {
       ContentPanel.kill();
-      ContentPanel.render(context.extensionUri);
+      ContentPanel.render(context.extensionUri, title);
       setTimeout(() => {
         vscode.commands.executeCommand(
           "workbench.action.webview.openDeveloperTools"
         );
       }, 500);
-
-      vscode.window.showInformationMessage("refreshed.");
     })
   );
 
   // Create the show content panel command
   context.subscriptions.push(
     vscode.commands.registerCommand("codeStream.showContent", async () => {
-      // vscode.window.showInformationMessage("Showing content");
-      ContentPanel.render(context.extensionUri);
+      ContentPanel.render(context.extensionUri, title);
     })
   );
 }

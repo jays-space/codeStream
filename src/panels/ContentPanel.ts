@@ -51,7 +51,7 @@ export class ContentPanel {
    *
    * @param extensionUri The URI of the directory containing the extension.
    */
-  public static render(extensionUri: Uri) {
+  public static render(extensionUri: Uri, title: string) {
     if (ContentPanel.currentPanel) {
       // If the webview panel already exists reveal it
       ContentPanel.currentPanel._panel.reveal(ViewColumn.One);
@@ -61,7 +61,7 @@ export class ContentPanel {
         // Panel view type
         "webview",
         // Panel title
-        "CodeStream",
+        title,
         // The editor column the panel should be displayed in
         ViewColumn.One,
         // Extra panel configurations
@@ -123,14 +123,14 @@ export class ContentPanel {
       "webview-ui",
       "dist",
       "assets",
-      "index-DfGG23i9.css",
+      "index.css",
     ]);
     // The JS file from the React build output
     const scriptUri = getUri(webview, extensionUri, [
       "webview-ui",
       "dist",
       "assets",
-      "index-CFso0JPL.js",
+      "index.js",
     ]);
 
     const nonce = getNonce();
@@ -144,6 +144,9 @@ export class ContentPanel {
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <meta http-equiv="Content-Security-Policy" content="img-src https:'' data:"; style-src ${webview.cspSource}; script-src 'nonce-${nonce}';">
           <link rel="stylesheet" type="text/css" href="${stylesUri}">
+          <script nonce="${nonce}">
+            const tsvscode = acquireVsCodeApi();
+          </script>
           <title>CodeStream</title>
         </head>
         <body>
