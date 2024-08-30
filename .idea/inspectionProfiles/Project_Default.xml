@@ -1,0 +1,21 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="1">
+            <item index="0" class="java.lang.String" itemvalue="header" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+    <inspection_tool class="PMDApex" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="rulesetPath" value="$USER_HOME$/Downloads/Accenture PMD Ruleset 2 (1).xml" />
+      <option name="enablePmdAppExchange" value="true" />
+      <option name="pmdAppExchangeRulesetPath" value="$USER_HOME$/Downloads/Accenture PMD AppExchange Ruleset (1).xml" />
+    </inspection_tool>
+  </profile>
+</component>

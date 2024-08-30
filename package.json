@@ -1,0 +1,82 @@
+{
+  "name": "codeStream",
+  "displayName": "CodeStream",
+  "description": "WILL DO LATER",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.92.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand: codeStream.refresh",
+    "onCommand: codeStream.showContent",
+    "onView:codeStream-sidebar"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "codeStream-sidebar-view",
+          "title": "CodeStream",
+          "icon": "media/codeStream.svg"
+        }
+      ]
+    },
+    "views": {
+      "codeStream-sidebar-view": [
+        {
+          "type": "webview",
+          "id": "codeStream-sidebar",
+          "name": "CodeStream",
+          "icon": "media/codeStream.svg",
+          "contextualTitle": "CodeStream"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "codeStream.refresh",
+        "category": "CodeStream",
+        "title": "Refresh"
+      },
+      {
+        "command": "codeStream.showContent",
+        "category": "CodeStream",
+        "title": "Paddy Says: If it breaks, we know not to do that again..."
+      }
+    ]
+  },
+  "scripts": {
+    "install:all": "npm install && cd webview-ui && npm install && cd sidebar-ui && npm install",
+    "start:webview": "cd webview-ui && npm run dev",
+    "build:webview": "cd webview-ui && npm run build",
+    "start:sidebar": "cd sidebar-ui && npm run dev",
+    "build:sidebar": "cd sidebar-ui && npm run build",
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.92.0",
+    "@types/mocha": "^10.0.7",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^7.14.1",
+    "@typescript-eslint/parser": "^7.11.0",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.5",
+    "ts-loader": "^9.5.1",
+    "webpack": "^5.92.1",
+    "webpack-cli": "^5.1.4",
+    "@vscode/test-cli": "^0.0.9",
+    "@vscode/test-electron": "^2.4.0"
+  }
+}
